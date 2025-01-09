@@ -20,10 +20,34 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->surname }}</td>
             <td>{{ $user->phone_number }}</td>
+            <td><button class="btn btn-danger btn-sm delete" data-id="{{ $user->id }}">X</button></td>
             </tr>
+
         @endforeach
     </tbody>
     </table>
     {{ $users->links() }}
 </div>
+@endsection
+@section('javascript')
+$( document ).ready(function() {
+    $('.delete').click(function(){
+        console.log($(this).data("id"));
+        console.log()
+        $.ajax({
+            method: "DELETE",
+            url: "http://127.0.0.1:8000/users/" + $(this).data("id")
+            {{-- data: { name: "John", location: "Boston" } --}}
+        })
+        .done(function( response ) {
+            alert("Succes!");
+            window.location.reload();
+        })
+        .fail(function (response){
+            alert("ERROR!")
+        })
+        
+    })
+    console.log($('.delete'));
+  });
 @endsection
