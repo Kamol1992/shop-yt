@@ -30,24 +30,7 @@
 </div>
 @endsection
 @section('javascript')
-$( document ).ready(function() {
-    $('.delete').click(function(){
-        console.log($(this).data("id"));
-        console.log()
-        $.ajax({
-            method: "DELETE",
-            url: "http://127.0.0.1:8000/users/" + $(this).data("id")
-            {{-- data: { name: "John", location: "Boston" } --}}
-        })
-        .done(function( response ) {
-            alert("Succes!");
-            window.location.reload();
-        })
-        .fail(function (response){
-            alert("ERROR!")
-        })
-        
-    })
-    console.log($('.delete'));
-  });
 @endsection
+{{-- @section('js-file')
+<script src="{{asset('js/delete.js')}}"></script>
+@endsection --}}

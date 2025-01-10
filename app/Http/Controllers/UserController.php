@@ -81,12 +81,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $flight = User::find($id);
-        $flight->delete();
-        return response()->json([
-            'status' => 'success'
-        ]);
+        // $user = User::find($id);
+        try{
+            $user->delete();
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }catch(\Exception $e){
+            return response()->json([
+                'status'=> 'error',
+                'message'=> 'Wystąpił błąd - USerController.php - 95',
+            ])->setStatusCode(500);
+        }
+        
     }
 }
