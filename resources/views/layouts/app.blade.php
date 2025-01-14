@@ -56,6 +56,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/users/list">Użytkownicy</a>
+                                    <a class="dropdown-item" href={{ route('products.index') }}>Produkty</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -77,13 +78,13 @@
             @yield('content')
         </main>
     </div>
-    <script src="{{asset('js/app.js')}}"></script>
+    {{-- <script src="{{asset('js/app.js')}}"></script> --}}
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript">
         @yield('javascript')
     </script>
-    {{-- <script>
+    <script>
         @yield('js-file')
-    </script> --}}
+    </script>
 </body>
 </html>

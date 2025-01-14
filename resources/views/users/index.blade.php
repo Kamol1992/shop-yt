@@ -30,6 +30,7 @@
 </div>
 @endsection
 @section('javascript')
+    const deleteUrl = "{{ url('users') }}/"  
 @endsection
 {{-- @section('js-file')
 <script src="{{asset('js/delete.js')}}"></script>

@@ -20,7 +20,7 @@ $( document ).ready(function() {
             if (result.isConfirmed) {
                 $.ajax({
                     method: "DELETE",
-                    url: "{{ url('users')}}/" + $(this).data("id")
+                    url: deleteUrl + $(this).data("id")
                 })
                 .done(function( response ) {
                     window.location.reload();
