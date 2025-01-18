@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -38,10 +39,14 @@ class ProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
+     * 
      */
     public function store(Request $request) 
     {
         $product = Product::create($request->all());
+        if($request->hasFile('image')){
+            $product->image_path = $request->file('image')->store('products', 'public');
+        }
         $product->save();
         return redirect(route('products.index'));
     }
@@ -82,6 +87,9 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $product->fill($request->all());
+        if($request->hasFile('image')){
+            $product->image_path = $request->file('image')->store('products', 'public');
+        }
         $product->save();
         return redirect(route('products.index'));
     }
