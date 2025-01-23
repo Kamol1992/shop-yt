@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Dotenv\Validator;
 
 class ProductController extends Controller
 {
@@ -37,13 +39,14 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreProductRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      * 
+     * 
      */
-    public function store(Request $request) 
+    public function store(StoreProductRequest $request) 
     {
-        $product = Product::create($request->all());
+        $product = Product::create($request->validated());
         if($request->hasFile('image')){
             $product->image_path = $request->file('image')->store('products', 'public');
         }
@@ -80,13 +83,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreProductRequest  $request
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Product $product)
+    public function update(StoreProductRequest $request, Product $product)
     {
-        $product->fill($request->all());
+        $product->fill($request->validated());
         if($request->hasFile('image')){
             $product->image_path = $request->file('image')->store('products', 'public');
         }
