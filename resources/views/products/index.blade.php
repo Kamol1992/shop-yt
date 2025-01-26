@@ -17,6 +17,7 @@
             <th scope="col">#</th>
             <th scope="col">Nazwa</th>
             <th scope="col">Opis</th>
+            <th scope="col">Kategoria</th>
             <th scope="col">Ilość</th>
             <th scope="col">Cena</th>
             <th scope="col">Akcje</th>
@@ -28,6 +29,7 @@
                 <th scope="row">{{ $product->id }}</th>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->description }}</td>
+                <td>@if($product->hasCategory()){{ $product->category->name }} @endif</td>
                 <td>{{ $product->amount }}</td>
                 <td>{{ $product->price }}</td>
                 <td>

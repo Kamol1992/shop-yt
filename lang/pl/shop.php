@@ -11,6 +11,7 @@ return [
             'description' => 'Opis',
             'amount' => 'Ilość',
             'price' => 'Cena',
+            'category'=> 'Kategoria',
             'pict' => 'Grafika'
         ]
     ]
