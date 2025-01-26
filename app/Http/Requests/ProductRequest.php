@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProductRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,6 +29,20 @@ class StoreProductRequest extends FormRequest
             'amount' => 'required|integer|min:0',
             'price' => 'required|numeric|between:0,99999.99',
             'image' => 'nullable|image|mimes:jpg,png'
+        ];
+    }
+
+    public function messeges()
+    {
+        return [
+            'name.required' => 'To pole jest wymagana'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Wymagane'
         ];
     }
 }
