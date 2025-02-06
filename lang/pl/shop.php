@@ -3,6 +3,8 @@
 return [
     'button' => [
         'save' => 'Zapisz',
+        'update' => 'filtruj',
+        'back_to_top' => 'Powróć na górę'
     ],
     'product' => [
         'create'=> [
@@ -14,6 +16,13 @@ return [
             'category'=> 'Kategoria',
             'pict' => 'Grafika'
         ]
+    ],
+    'welcome' =>[
+        'products' => 'Produkty',
+        'category' => 'Kategorie',
+        'size' => 'Rozmiar',
+        'price' => 'Cena',
     ]
+
 ]
 ?>
