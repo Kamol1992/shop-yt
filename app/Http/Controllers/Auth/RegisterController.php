@@ -7,6 +7,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -70,5 +73,19 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+
+    protected function register(Request $request)
+    {
+                $this->validator($request->all())->validate();
+
+                $user = $this->create($request->all());
+
+                event(new Registered($user)); // Wysyła e-mail weryfikacyjny
+
+                Auth::logout(); // 🚨 Upewniamy się, że użytkownik nie jest zalogowany
+
+                return redirect('/login')->with('success', 'Zarejestrowano pomyślnie! Sprawdź e-mail, aby go zweryfikować.');
     }
 }

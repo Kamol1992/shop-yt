@@ -54,7 +54,7 @@ class ProductController extends Controller
             $product->image_path = $request->file('image')->store('products', 'public');
         }
         $product->save();
-        return redirect(route('products.index'));
+        return redirect(route('products.index'))->with('status', __('shop.notification.prod_stored'));
     }
 
     /**
@@ -98,7 +98,7 @@ class ProductController extends Controller
             $product->image_path = $request->file('image')->store('products', 'public');
         }
         $product->save();
-        return redirect(route('products.index'));
+        return redirect(route('products.index'))->with('status', __('shop.notification.prod_updated'));
     }
 
     /**
@@ -112,6 +112,7 @@ class ProductController extends Controller
         // $user = User::find($id);
         try{
             $product->delete();
+            Session::flash();
             return response()->json([
                 'status' => 'success'
             ]);

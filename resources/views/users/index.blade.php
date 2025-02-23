@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <div class="col-6">
+        <h1><i class="fa-solid fa-users"></i> Użytkownicy</h1>
+    </div>
     <table class="table table-hover">
     <thead>
         <tr>
@@ -20,7 +23,7 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->surname }}</td>
             <td>{{ $user->phone_number }}</td>
-            <td><button class="btn btn-danger btn-sm delete" data-id="{{ $user->id }}">X</button></td>
+            <td><button class="btn btn-danger btn-sm delete" data-id="{{ $user->id }}"><i class="fa-solid fa-trash"></i></button></td>
             </tr>
 
         @endforeach

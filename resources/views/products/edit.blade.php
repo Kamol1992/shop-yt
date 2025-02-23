@@ -108,7 +108,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Zapisz
+                                    <i class="fa-solid fa-floppy-disk"></i>
                                 </button>
                             </div>
                         </div>

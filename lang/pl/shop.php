@@ -22,6 +22,11 @@ return [
         'category' => 'Kategorie',
         'size' => 'Rozmiar',
         'price' => 'Cena',
+    ],
+    'notification' =>[
+        'prod_updated' => 'zaktualizowano Produkt',
+        'prod_stored' => 'Dodano produkt',
+        'prod_deleted' => 'Usunięto produkt'
     ]
 
 ]

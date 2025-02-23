@@ -95,6 +95,10 @@ return [
         ],
     ],
 
+    'features' => [
+    'email_verification' => true,
+],
+
     /*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout

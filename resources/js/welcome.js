@@ -9,10 +9,18 @@ $(function(){
       getProducts($(this).text());
     });
 
+    $('div.products-sort a').click(function(event){
+      event.preventDefault();
+      console.log('SORT!');
+      getProducts($('a.products-actual-count').first().first.text())
+    })
+
+
+
     $('a#filter-button').click(function(event){
         event.preventDefault();
-        console.log('Click Welcome');
-        getProducts($('a.products-actual-count').text($(this).text()));
+        console.log($('a.products-actual-count').text());
+        getProducts($('a.products-actual-count').first().text());
     })
 
     function getProducts(paginate) {
